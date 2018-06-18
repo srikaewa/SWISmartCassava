@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.github.aakira.compoundicontextview.CompoundIconTextView;
 import com.github.abdularis.buttonprogress.DownloadButtonProgress;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +25,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yarolegovich.lovelydialog.LovelyDialogCompat;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+import org.joda.time.Period;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.lang.reflect.Field;
 import java.text.DateFormat;
@@ -50,10 +57,10 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
 
     private TextView textview_farm_title;
     private TextView textview_farm_description;
-    private TextView textview_rain_status;
     private ImageView imageview_farm_setting;
     private ImageView imageview_farm_alert;
-    private ImageView imageview_rain_sensor;
+    private CompoundIconTextView textview_rain_status;
+    private CompoundIconTextView textview_today_watering;
     private TextView    textview_farm;
     private DownloadButtonProgress switch_farm;
     private TextView    textview_mainpump;
@@ -128,9 +135,10 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
             }
         });
         imageview_farm_alert = findViewById(R.id.imageview_farm_alert);
-        imageview_rain_sensor = findViewById(R.id.imageView_rainSensor);
         textview_farm_title = findViewById(R.id.farm_title);
         textview_farm_description = findViewById(R.id.farm_description);
+        textview_rain_status = findViewById(R.id.textview_rain_status);
+        textview_today_watering = findViewById(R.id.textview_today_watering);
         textview_rain_status = findViewById(R.id.textview_rain_status);
 
         switch_farm = findViewById(R.id.switch_farm);
@@ -238,13 +246,20 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
                 farm.rain_sensor_id = ds.child("rain_sensor_id").getValue(String.class);
                 farm.valve_1_id = ds.child("valve_1_id").getValue(String.class);
                 farm.valve_2_id = ds.child("valve_2_id").getValue(String.class);
-                String act = ds.child("activated").getValue(String.class);
-                if(act.equals("true"))
+                farm.activated = ds.child("activated").getValue(String.class).equals("true");
+                farm.watering_schedule.clear();
+                for(DataSnapshot ws: ds.child("watering_schedule").getChildren())
                 {
-                    farm.activated = true;
-                }
-                else if(act.equals("false")){
-                    farm.activated = false;
+                    WateringSchedule w = new WateringSchedule();
+                    //Log.d("WS", ws.toString());
+                    w.current_date = ws.child("current_date").getValue(String.class);
+                    w.next_date = ws.child("next_date").getValue(String.class);
+                    w.days = ws.child("days").getValue(Integer.class);
+                    w.hours = ws.child("hours").getValue(Integer.class);
+                    w.mins = ws.child("mins").getValue(Integer.class);
+                    w.total_mins = ws.child("total_mins").getValue(Integer.class);
+                    farm.watering_schedule.add(w);
+                    //Log.d("WS", farm.watering_schedule.get(0).current_date);
                 }
                 initialFarmUI();
                 final Farm f = farm;
@@ -1972,7 +1987,7 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
                     mapOfSensor.put(sensor.id, sensor);
                 }
                 updateRainUI();
-                updateFarmUI();
+                //updateFarmUI();
             }
 
             @Override
@@ -1987,15 +2002,19 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
     {
         // currently support only 1 sensor
         Sensor sensor = mapOfSensor.get(farm.rain_sensor_id);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-        SimpleDateFormat ft =
-                new SimpleDateFormat ("E yyyy.MM.dd '@' HH:mm:ss");
-        Date date = new Date();
-        try {
-            date = formatter.parse(sensor.created_at.replaceAll("Z$", "+0000"));
-            //Log.d("CreatedAt", "Date ==> " + ft.format(date) + " with time zone ==> " + "time zone : " + TimeZone.getDefault().getID());
-        }catch(ParseException e){
-            e.printStackTrace();
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        LocalDate ld = fmt.parseLocalDate(sensor.created_at);
+        LocalDate now = LocalDate.now();
+        int dbetween = Days.daysBetween(ld, now).getDays();
+        if(dbetween == 0) {
+            textview_rain_status.setText("ปริมาณน้ำฝนในแปลงล่าสุดวันนี้ " + Math.round(Float.parseFloat(sensor.field1)) + " มม.");
+        }
+        else if(dbetween == 1)
+        {
+            textview_rain_status.setText("ปริมาณน้ำฝนในแปลงล่าสุดเมื่อวานนี้ " + Math.round(Float.parseFloat(sensor.field1)) + " มม.");
+        }else
+        {
+            textview_rain_status.setText("ปริมาณน้ำฝนในแปลงล่าสุดเมื่อ " + dbetween + " วันที่แล้ว " + Math.round(Float.parseFloat(sensor.field1)) + " มม.");
         }
 
     }
@@ -2368,6 +2387,7 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
     void updateFarmUI()
     {
         Sensor sensor = mapOfSensor.get(farm.rain_sensor_id);
+        updateTodayWatering();
         if(farm.isActivated())
         {
             switch_farm.setFinish();
@@ -2379,6 +2399,28 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
             switch_farm.setIdle();
             textview_farm.setText(getResources().getString(R.string.farm_deactivated));
             activateOffUI();
+        }
+    }
+
+    void updateTodayWatering()
+    {
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+        LocalDate now = LocalDate.now();
+        for(int i=0;i < farm.watering_schedule.size();i++)
+        {
+            LocalDate wdate = fmt.parseLocalDate(farm.watering_schedule.get(i).current_date);
+            int dbetween = Days.daysBetween(now, wdate).getDays();
+            Log.d("WateringDate", "WDate = " + wdate.toString() + ", now = " + now.toString() + ", days diff = " + dbetween);
+            if(dbetween == 0)
+            {
+                textview_today_watering.setText("ตารางให้น้ำวันนี้ " + farm.watering_schedule.get(i).hours + " ชั่วโมง " + farm.watering_schedule.get(i).mins + " นาที");
+                break;
+            }
+            else if(dbetween > 0)
+            {
+                textview_today_watering.setText("ตารางให้น้ำครั้งต่อไปอีก " + dbetween + " วัน");
+                break;
+            }
         }
     }
 
@@ -2459,6 +2501,7 @@ public class FarmETpControlCenterActivity extends AppCompatActivity {
     {
         textview_farm_title.setText(farm.getTitle());
         textview_farm_description.setText(farm.getDescription());
+        updateFarmUI();
     }
 
 }

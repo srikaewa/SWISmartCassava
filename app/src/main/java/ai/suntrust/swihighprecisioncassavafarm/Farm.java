@@ -1,5 +1,8 @@
 package ai.suntrust.swihighprecisioncassavafarm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Farm {
     String id;
     String title;
@@ -8,6 +11,8 @@ public class Farm {
     String longitude;
     String starting_date;
     int watering_scheme;
+
+    List<WateringSchedule> watering_schedule = new ArrayList<WateringSchedule>();
 
     boolean need_watering;
 

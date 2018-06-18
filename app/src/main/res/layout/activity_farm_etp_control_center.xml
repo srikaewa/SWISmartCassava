@@ -100,56 +100,40 @@
                 android:textSize="@dimen/normal_font_size"
                 android:textColor="@color/white"
                 android:fontFamily="@font/superspace_regular"/>
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_below="@id/farm_description"
-                android:layout_centerHorizontal="true">
-                <ImageView
-                    android:id="@+id/imageView_rainSensor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="center"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/icons_rain_filled_36_black"
-                    android:tint="@color/white"
-                    />
-                <TextView
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="vertical">
+                <com.github.aakira.compoundicontextview.CompoundIconTextView
                     android:id="@+id/textview_rain_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/imageView_rainSensor"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
                     android:text="@string/rain_status"
-                    android:textSize="@dimen/medium_font_size"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/superspace_regular"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_below="@id/farm_description"
-                android:layout_centerHorizontal="true">
-                <ImageView
-                    android:id="@+id/imageView_today_watering"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="center"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/icon_today_schedule_36_black"
-                    android:tint="@color/white"
-                    />
-                <TextView
+                    android:textSize="@dimen/normal_font_size"
+                    app:cit_drawableLeft="@drawable/icons_rain_filled_36_black"
+                    app:cit_iconColor="@color/white"
+                    app:cit_iconHeight="36dp"
+                    app:cit_iconWidth="36dp" />
+                <com.github.aakira.compoundicontextview.CompoundIconTextView
                     android:id="@+id/textview_today_watering"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/imageView_today_watering"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
                     android:text="@string/watering_schedule"
-                    android:textSize="@dimen/medium_font_size"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/superspace_regular"/>
-            </RelativeLayout>
+                    android:textSize="@dimen/normal_font_size"
+                    app:cit_drawableLeft="@drawable/icon_today_schedule_36_black"
+                    app:cit_iconColor="@color/white"
+                    app:cit_iconHeight="36dp"
+                    app:cit_iconWidth="36dp" />
+            </LinearLayout>
         </RelativeLayout>
 
         <TableLayout
