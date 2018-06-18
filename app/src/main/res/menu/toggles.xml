@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/toggle_1"
+        android:icon="@drawable/icons_valve_filled_60_black" />
+
+    <item
+        android:id="@+id/toggle_2"
+        android:icon="@drawable/icons_valve_filled_60_black" />
+
+    <item
+        android:id="@+id/toggle_3"
+        android:icon="@drawable/icons_valve_filled_60_black" />
+
+    <item
+        android:id="@+id/toggle_4"
+        android:icon="@drawable/icons_valve_filled_60_black" />
+</menu>

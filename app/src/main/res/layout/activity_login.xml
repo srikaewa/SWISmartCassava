@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".LoginActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <ImageView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/cassava_01"
+        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:textSize="@dimen/header_font_size"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/superspace_regular"
+            android:text="@string/app_name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:textSize="@dimen/normal_font_size"
+            android:textColor="@color/white"
+            android:fontFamily="@font/superspace_regular"
+            android:text="@string/welcome_message"/>
+
+        <ImageView
+            android:id="@+id/imageview_swi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:maxWidth="160dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:padding="10dp"
+            android:src="@drawable/swi_logo"
+            />
+        <ImageView
+            android:id="@+id/imageview_nia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:maxWidth="160dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:padding="10dp"
+            android:src="@drawable/nia_logo"/>
+        <ImageView
+            android:id="@+id/imageview_sut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:maxWidth="160dp"
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:src="@drawable/sut_logo"/>
+
+        <TextView
+            android:id="@+id/touch_to_continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="24dp"
+            android:textSize="@dimen/normal_font_size"
+            android:textColor="@color/white"
+            android:fontFamily="@font/superspace_regular"
+            android:text="@string/touch_to_continue"/>
+    </LinearLayout>
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/login_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/login_button"
+                android:textSize="@dimen/normal_font_size"
+                android:fontFamily="@font/superspace_regular"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

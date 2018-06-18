@@ -1,0 +1,1525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:material="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FarmDetailsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progressBar_loading"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/farm_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cassava_field">
+                    <requestFocus />
+                </ImageView>
+                <ImageView
+                    android:id="@+id/imageview_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/farm_picture"
+                    android:layout_alignLeft="@id/farm_picture"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:clickable="true"
+                    android:src="@drawable/ic_photo_camera_black_24dp"
+                    android:tint="@color/white"
+                    />
+                <ImageView
+                    android:id="@+id/animated_drip"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@+id/textview_humidity_sensor_value"
+                    android:layout_alignRight="@+id/farm_picture"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="invisible"
+                    />
+                <TextView
+                    android:id="@+id/farm_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/farm_description"
+                    android:fontFamily="@font/superspace_bold"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/farm_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/farm_picture"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/superspace_regular"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textview_humidity_sensor_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/farm_picture"
+                    android:layout_alignTop="@+id/farm_picture"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/superspace_regular"
+                    android:text="0.77"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp">
+
+                <!--TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_text_fields_black_24dp" />
+                    <TextView
+                        android:id="@+id/textView_farmDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:gravity="left"
+                        android:layout_columnSpan="2"
+                        android:fontFamily="@font/superspace_regular"/>
+                </TableRow-->
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--ImageView
+                        android:id="@+id/imageView_map"
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_place_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/textview_farmLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:ems="9"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="left"
+                        android:textSize="@dimen/small_font_size" /-->
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/textview_farmLocation"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/farm_location_label"
+                        android:clickable="true"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/farm_location_label"
+                        material:met_iconPadding="0dp" />
+                    <TextView
+                        android:id="@+id/textview_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="true"
+                        android:fontFamily="@font/superspace_bold"
+                        android:gravity="right"
+                        android:text="@string/map"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/normal_font_size" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--ImageView
+                        android:id="@+id/imageView_wateringScheme"
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/watering_scheme_label" />
+
+                    <TextView
+                        android:id="@+id/textview_wateringScheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_bold_italic"
+                        android:gravity="right"
+                        android:text="@string/watering_scheme" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/textview_waterScheme"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/watering_scheme_label"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/watering_scheme_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--ImageView
+                        android:id="@+id/imageView_sampling_time"
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_timer_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/farm_sampling_time" />
+                    <EditText
+                        android:id="@+id/edittext_farm_sampling_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textSize="@dimen/small_font_size"
+                        android:gravity="right"
+                        android:text="15"
+                        android:inputType="text"
+                        android:maxLines="1"/-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_farm_sampling_time"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/farm_sampling_time_label"
+                        android:fontFamily="@font/superspace_regular"
+                        android:inputType="numberDecimal"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/farm_sampling_time_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--ImageView
+                        android:id="@+id/imageView_soilType"
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_grain_black_24dp" /-->
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/spinner_soilType"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textSize="@dimen/small_font_size"
+                        material:met_floatingLabel="normal"
+                        material:met_floatingLabelText="@string/soil_type_label"
+                        material:met_floatingLabelAlwaysShown="true"
+                        />
+
+                    <!--Spinner
+                        android:id="@+id/spinner_soilType"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="2"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="fill_horizontal" /-->
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/detail_margin_top"
+                    android:paddingBottom="@dimen/default_padding_bottom"
+                    >
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_build_black_24dp" /-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/normal_font_size"
+                        android:text="@string/main_pump_label" />
+
+                    <TextView
+                        android:id="@+id/main_pump_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        android:text="@string/details"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/normal_font_size" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_mainPump_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_build_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/main_pump_description" /-->
+
+                    <!--EditText
+                        android:id="@+id/edittext_mainPump_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:justificationMode="inter_word"
+                        android:text="@string/main_pump_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_mainPump_description"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/main_pump_description_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_mainPump1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_build_black_24dp" /-->
+
+                    <!--TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/main_pump_channel_id_label" /-->
+
+                    <!--fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spinner_mainpump"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="2"
+                        app:ms_arrowColor="@color/black"
+                        app:ms_arrowSize="@dimen/small_font_size"
+                        app:ms_floatingLabelColor="@color/black"
+                        app:ms_floatingLabelText="@string/main_pump_channel_id_label"
+                        app:ms_hint="เลือกปั๊มน้ำหลัก"
+                        app:ms_hintTextSize="@dimen/small_font_size"
+                        app:ms_multiline="false" /-->
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/spinner_mainpump"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/main_pump_channel_id_label"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textSize="@dimen/small_font_size"
+                        app:met_floatingLabel="normal" />
+                    <!--EditText
+                        android:id="@+id/edittext_mainPump_ChannelId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/main_pump_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_mainPump2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_build_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/main_pump_API_key_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_mainPump_APIKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/main_pump_API_key"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_mainPump_APIKey"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/main_pump_API_key_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+
+                </TableRow>
+
+                <!--TableRow
+                    android:id="@+id/tableRow_mainpump_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch_mainpump"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="2"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/main_pump_status"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+
+                </TableRow-->
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/detail_margin_top"
+                    android:paddingBottom="@dimen/default_padding_bottom">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_memory_black_24dp" /-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/normal_font_size"
+                        android:text="@string/humidity_sensor_label" />
+
+                    <TextView
+                        android:id="@+id/textview_humidity_sensor_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        android:text="@string/details"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/normal_font_size" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_sensor_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_memory_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/humidity_sensor_description_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_humidity_sensor_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:justificationMode="inter_word"
+                        android:text="@string/humidity_sensor_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_humidity_sensor_description"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/humidity_sensor_description_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_humiditySensor1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:id="@+id/imageView_humiditySensor"
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_memory_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/humidity_sensor_channel_id_label" /-->
+
+                    <!--EditText
+                        android:id="@+id/edittext_humidity_sensor_ChannelId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/humidity_sensor_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <!--Spinner
+                        android:id="@+id/spinner_humidity"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="fill_horizontal" /-->
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/spinner_humidity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/humidity_sensor_channel_id_label"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textSize="@dimen/small_font_size"
+                        app:met_floatingLabel="normal" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_humiditySensor2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_build_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/humidity_sensor_API_key_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_humidity_sensor_APIKey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/humidity_sensor_API_key"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_humidity_sensor_APIKey"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/humidity_sensor_API_key_label"
+                        material:met_floatingLabelAlwaysShown="true"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_humiditySensor3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_build_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/humidity_sensor_value_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_humidity_sensor_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/humidity_sensor_threshold"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_humidity_sensor_value"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/humidity_sensor_value_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_humiditySensor4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_build_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/humidity_sensor_threshold_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_humidity_critical_point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/humidity_sensor_threshold"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_humidity_critical_point"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:inputType="numberDecimal"
+                        android:hint="@string/humidity_sensor_threshold_label"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/humidity_sensor_threshold_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+                </TableRow>
+                <!--TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/imageView_zoneNumber"
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:paddingRight="10dp"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/zone_label"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="right">
+                        <TextView
+                            android:id="@+id/textView_zoneNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/superspace_bold_italic"
+                            android:paddingRight="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/superspace_bold"
+                            android:text="@string/zone"/>
+                    </LinearLayout>
+                </TableRow-->
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/detail_margin_top"
+                    android:paddingBottom="@dimen/default_padding_bottom"
+                    >
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" /-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/normal_font_size"
+                        android:text="@string/valve_label" />
+
+                    <TextView
+                        android:id="@+id/textview_valve1_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        android:text="@string/details"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/normal_font_size" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_valve1_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/valve1_description_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_valve1_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/valve1_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_valve1_description"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/valve1_description_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_valve1_channelID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/valve1_channel_id_label" /-->
+
+                    <!--EditText
+                        android:id="@+id/edittext_valve1_ChannelId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/valve1_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <!--Spinner
+                        android:id="@+id/spinner_valve1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="fill_horizontal" /-->
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/spinner_valve1"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textSize="@dimen/small_font_size"
+                        material:met_floatingLabel="normal"
+                        material:met_floatingLabelText="@string/valve1_channel_id_label"
+                        material:met_floatingLabelAlwaysShown="true"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_valve1_API_key"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/valve1_API_key_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_valve1_API_key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/valve_API_key"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_valve1_API_key"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/valve1_API_key_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow_valve2_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/valve2_description_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_valve2_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/valve2_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_valve2_description"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/valve2_description_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_valve2_channelID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/valve2_channel_id_label" /-->
+
+                    <!--EditText
+                        android:id="@+id/edittext_valve2_ChannelId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/valve2_channel_id"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <!--Spinner
+                        android:id="@+id/spinner_valve2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="fill_horizontal" /-->
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/spinner_valve2"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:textSize="@dimen/small_font_size"
+                        material:met_floatingLabel="normal"
+                        material:met_floatingLabelText="@string/valve2_channel_id_label"
+                        material:met_floatingLabelAlwaysShown="true"
+                        />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_valve2_API_key"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/detail_margin"
+                    android:paddingBottom="20dp"
+                    android:visibility="gone">
+
+                    <!--ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/valve2_API_key_label" />
+
+                    <EditText
+                        android:id="@+id/edittext_valve2_API_key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:gravity="right"
+                        android:text="@string/valve_API_key"
+                        android:textSize="@dimen/small_font_size" /-->
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/edittext_valve2_API_key"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/superspace_regular"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false"
+                        material:met_floatingLabel="highlight"
+                        material:met_floatingLabelText="@string/valve2_API_key_label"
+                        material:met_iconLeft="@drawable/ic_place_black_24dp"
+                        material:met_iconPadding="0dp" />
+
+                </TableRow>
+                <!--TableRow
+                    android:id="@+id/tableRow_switch11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch11"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve1_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve2_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch13"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve3_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch14"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve4_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch15"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve5_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch16"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve6_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow-->
+
+
+                <!--TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal|center_vertical"
+                        android:fontFamily="@font/superspace_bold"
+                        android:text="@string/valve_zone2_label" />
+
+                    <TextView
+                        android:id="@+id/textview_valve2_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:fontFamily="@font/superspace_bold"
+                        android:gravity="right"
+                        android:text="@string/details"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/medium_font_size" />
+                </TableRow-->
+
+
+
+                <!--TableRow
+                    android:id="@+id/tableRow_switch21"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch21"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve7_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch22"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch22"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve8_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch23"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch23"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve9_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch24"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch24"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve10_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch25"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch25"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve11_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_switch26"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_width"
+                        android:layout_height="@dimen/icon_width"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:visibility="invisible"
+                        app:srcCompat="@drawable/ic_border_inner_black_24dp" />
+
+                    <Switch
+                        android:id="@+id/switch26"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".2"
+                        android:fontFamily="@font/superspace_regular"
+                        android:text="@string/valve12_label"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+                </TableRow-->
+
+            </TableLayout>
+            <!--TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_weight=".2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="โซน 1"
+                        tools:layout_editor_absoluteX="29dp"
+                        tools:layout_editor_absoluteY="406dp" />
+
+                </TableRow>
+            </TableLayout-->
+
+        </LinearLayout>
+
+    </ScrollView>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

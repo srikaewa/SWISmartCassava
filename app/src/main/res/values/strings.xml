@@ -1,0 +1,163 @@
+<resources>
+    <string name="app_name">SWI Smart Casssava</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">ตั้งค่าระบบ</string>
+    <string name="title_activity_farm_list">FarmListActivity</string>
+
+    <string name="downloading_from_server">ดาวน์โหลดข้อมูลฟาร์ม...</string>
+
+    <string name="latitude_label">ละติจูด:</string>
+    <string name="longitude_label">ลองจิจูด:</string>
+    <string name="watering_scheme_label">วิธีการให้น้ำ</string>
+    <string name="watering_scheme">ให้น้ำอัตโนมัติตามค่าเซนเซอร์ในแปลง</string>
+    <string-array name="watering_scheme_array">
+        <item>ให้น้ำอัตโนมัติตามค่าเซนเซอร์ในแปลง</item>
+        <item>ให้น้ำอัตโนมัติตามสภาพอากาศ</item>
+    </string-array>
+    <string name="humidity_status_label">ค่าความชื้นในแปลงล่าสุด</string>
+    <string name="humidity_status">ค่าความชื้นล่าสุด 9.6% > ค่าวิกฤตที่ 5%</string>
+    <string name="sensor_value">11.9</string>
+    <string name="sensor_value_unit">%</string>
+    <string name="sensor_value_timestamp">11:40 - 11/4/2018</string>
+    <string name="farm_sampling_time_label">ช่วงเวลาตรวจสอบค่าเซ็นเซอร์ (นาที)</string>
+    <string name="minute">นาที</string>
+
+    <string name="rain_status_label">ปริมาณน้ำฝนในแปลงล่าสุด</string>
+    <string name="rain_status">ปริมาณน้ำฝนในแปลงล่าสุด 11 มม.</string>
+
+    <string name="today_watering_label">ตารางให้น้ำวันนี้</string>
+    <string name="next_day_watering_label">ตารางให้น้ำถัดไป</string>
+
+    <string name="farm_card_detail">ดูรายละเอียด</string>
+    <string name="farm_card_control">ควบคุมการให้น้ำ</string>
+    <string name="details">ดูรายละเอียด</string>
+    <string name="close">ปิดรายละเอียด</string>
+
+    <string name="map">แผนที่</string>
+    <string name="farm_location_label">ตำแหน่งฟาร์ม</string>
+
+    <string name="farm_title">ไร่แสนรัก</string>
+    <string name="farm_description">ไร่มันสำปะหลังแนว high precision farming ที่มีการให้น้ำอย่างแม่นยำแบบอัตโนมัติตามค่าความชื้นจากเครือข่ายเซ็นเซอร์ไร้สายภายในแปลง</string>
+
+    <string name="farm_activated">ระบบฟาร์มเปิด</string>
+    <string name="farm_deactivated">ระบบฟาร์มปิด</string>
+
+    <string name="soil_type_label">ประเภทของดินปลูก</string>
+
+    <string name="main_pump_channel_id_label">หมายเลขปั๊มน้ำ</string>
+    <string name="main_pump_channel_id">111111</string>
+    <string name="main_pump_API_key_label">รหัสสั่งงานปั๊มน้ำ</string>
+    <string name="main_pump_API_key">YMBGHMZE13VDXXXX</string>
+    <string name="main_pump_configuration">การตั้งค่าปั๊มน้ำ</string>
+    <string name="main_pump_description_label">รายละเอียดปั๊ม</string>
+    <string name="main_pump_label">ปั๊มน้ำหลัก</string>
+    <string name="main_pump_status">สถานะ</string>
+    <string name="main_pump_on">ปั๊มน้ำหลักเปิด</string>
+    <string name="main_pump_off">ปั๊มน้ำหลักปิด</string>
+
+
+    <string name="solenoid_channel_id_label">หมายเลขวาล์วน้ำ</string>
+    <string name="solenoid_channel_id">222222</string>
+    <string name="solenoid_API_key_label">รหัสวาล์วน้ำ</string>
+    <string name="solenoid_API_key">YMBGHMZE13VDYYYY</string>
+    <string name="solenoid_status_label">สถานะวาล์วน้ำ</string>
+    <string name="solenoid_status_on">ON</string>
+    <string name="solenoid_status_off">OFF</string>
+
+    <string name="humidity_sensor_channel_id_label">หมายเลขเซ็นเซอร์ความชื้น</string>
+    <string name="humidity_sensor_channel_id">333333</string>
+    <string name="humidity_sensor_API_key_label">รหัสอ่านค่าเซ็นเซอร์ความชื้น</string>
+    <string name="humidity_sensor_API_key">YMBGHM1233VDSSSS</string>
+    <string name="humidity_sensor_configuration">การตั้งค่าเซ็นเซอร์ความชื้น</string>
+    <string name="humidity_sensor_label">เซ็นเซอร์ความชื้น</string>
+    <string name="humidity_sensor_threshold_label">จุดวิกฤตความชื้น (%)</string>
+    <string name="humidity_sensor_value_label">ค่าความชื้นล่าสุด</string>
+    <string name="humidity_sensor_threshold">15%</string>
+    <string name="humidity_sensor_description_label">รายละเอียด</string>
+
+    <string name="drip_system_label">ระบบน้ำหยด</string>
+    <string name="drip_flowrate_label">อัตราการไหลของหัวน้ำหยด (ลิตร/ชม.)</string>
+    <string name="drip_interval_label">ระยะห่างระหว่างหัวน้ำหยด (เมตร)</string>
+    <string name="tape_interval_label">ระยะห่างระหว่างเทปน้ำหยด (เมตร)</string>
+    <string name="total_drip_per_rai_label">จำนวนหัวน้ำหยดทั้งหมด (ต่อไร่)</string>
+    <string name="total_flowrate_per_rai">อัตราการไหลของน้ำเข้าแปลงทั้งหมดต่อไร่ (ลิตร/ชม.)</string>
+
+    <string name="watering_schedule">ตารางให้น้ำวันนี้</string>
+
+    <string name="rain_sensor_channel_id_label">หมายเลขเซ็นเซอร์น้ำฝน</string>
+    <string name="rain_sensor_channel_id">444778</string>
+    <string name="rain_sensor_description_label">รายละเอียด</string>
+    <string name="rain_sensor_label">เซ็นเซอร์น้ำฝน</string>
+    <string name="rain_sensor_API_key_label">รหัสอ่านค่าเซ็นเซอร์</string>
+    <string name="rain_sensor_API_key">YMBGXY1233VDSSSS</string>
+    <string name="rain_sensor_value_label">ปริมาณน้ำฝนล่าสุด</string>
+
+    <string name="zone_number_label">จำนวนโซนให้น้ำ</string>
+    <string name="zone_label">โซนให้น้ำ</string>
+    <string name="zone">โซน</string>
+    <string name="zone_id_label">โซนให้น้ำหมายเลข</string>
+
+    <string name="valve_label">วาล์วเปิดปิดน้ำ</string>
+    <string name="valve1_channel_id_label">หมายเลขวาล์วชุดที่ 1</string>
+    <string name="valve1_API_key_label">รหัสวาล์วชุดที่ 1</string>
+    <string name="valve_API_key">16AR3QPAL8H48SE5</string>
+    <string name="valve1_channel_id">444444</string>
+    <string name="valve1_description_label">รายละเอียดวาล์วชุดที่ 1</string>
+    <string name="valve2_channel_id_label">หมายเลขวาล์วชุดที่ 2</string>
+    <string name="valve2_API_key_label">รหัสวาล์วชุดที่ 2</string>
+    <string name="valve2_channel_id">444444</string>
+    <string name="valve2_description_label">รายละเอียดวาล์วชุดที่ 2</string>
+
+
+    <string name="valve1_label">วาล์ว #1</string>
+    <string name="valve2_label">วาล์ว #2</string>
+    <string name="valve3_label">วาล์ว #3</string>
+    <string name="valve4_label">วาล์ว #4</string>
+    <string name="valve5_label">วาล์ว #5</string>
+    <string name="valve6_label">วาล์ว #6</string>
+    <string name="valve7_label">วาล์ว #7</string>
+    <string name="valve8_label">วาล์ว #8</string>
+    <string name="valve9_label">วาล์ว #9</string>
+    <string name="valve10_label">วาล์ว #10</string>
+    <string name="valve11_label">วาล์ว #11</string>
+    <string name="valve12_label">วาล์ว #12</string>
+
+    <string name="server_address">http://172.27.234.220:3000</string>
+    <string name="server_address_label">Server address</string>
+
+
+    <string name="cancel">ปิด</string>
+    <string name="save">บันทึก</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="normal_map">แผนที่ปกติ</string>
+    <string name="hybrid_map">แผนที่ผสม</string>
+    <string name="satellite_map">แผนที่ทางอากาศ</string>
+    <string name="terrain_map">แผนที่ภูมิประเทศ</string>
+    <string name="default_info_title">ตำแหน่งปัจจุบัน</string>
+    <string name="default_info_snippet">ไม่พบสถานที่ใด ๆ เพราะ location permission ถูกปิดอยู่.</string>
+    <string name="option_get_place">รายละเอียดสถานที่</string>
+    <string name="pick_place">เลือกสถานที่</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="login_button">Login</string>
+    <string name="login_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_farm_control_center">Farm Control Center</string>
+    <string name="farm_configuration">จัดการฟาร์ม</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="welcome_message">ระบบให้น้ำอย่างชาญฉลาดเชิง high precision farming หรือระบบเกษตรกรรมแม่นยำสูง โดยความร่วมมือของบริษัทสงวนวงษ์อุตสาหกรรมจำกัด มหาวิทยาลัยเทคโนโลยีสุรนารี และสำนักงานนวัตกรรมแห่งชาติ</string>
+    <string name="touch_to_continue">แตะหน้าจอเพื่อเริ่มต้นใช้งานระบบ</string>
+
+    <string name="Complete">วาล์วเปิด</string>
+    <string name="Error">Error</string>
+    <string name="Upload">กำลังเปิด</string>
+
+
+</resources>

@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "141388591700",
+    "firebase_url": "https://swi-high-precision-farm.firebaseio.com",
+    "project_id": "swi-high-precision-farm",
+    "storage_bucket": "swi-high-precision-farm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141388591700:android:ac7bba7d92055b5a",
+        "android_client_info": {
+          "package_name": "ai.suntrust.swihighprecisionfarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141388591700-kual3cq78sau9qui9po6om83hfh151rb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ai.suntrust.swihighprecisionfarm",
+            "certificate_hash": "13dd7334581d091e2e2833edd23a99db2fd5b737"
+          }
+        },
+        {
+          "client_id": "141388591700-5ujnggeaq16eju6hedl0ffdc5mkl2v5r.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "141388591700-5ujnggeaq16eju6hedl0ffdc5mkl2v5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtPRk2aWfJLOtmGOwxfIoagJb_8_k5E20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141388591700-5ujnggeaq16eju6hedl0ffdc5mkl2v5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
