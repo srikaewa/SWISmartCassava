@@ -6,6 +6,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">ตั้งค่าระบบ</string>
+    <string name="action_about">เกี่ยวกับ App</string>
+    <string name="app_version">Version</string>
     <string name="title_activity_farm_list">FarmListActivity</string>
 
     <string name="downloading_from_server">ดาวน์โหลดข้อมูลฟาร์ม...</string>

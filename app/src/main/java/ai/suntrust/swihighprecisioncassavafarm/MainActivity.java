@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -39,7 +41,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity
     String god_mode = "000";
 
     //ProgressDialog dialog_loading;
+    LovelyInfoDialog dialog_about_app;
     LovelyProgressDialog dialog_farm_loading;
 
     /**** firebase authentication ***/
@@ -421,6 +426,23 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, SettingActivity.class);
             startActivity(intent);
             return true;
+        } else if(id == R.id.action_about){
+            try {
+                PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+                String version = pInfo.versionName;
+                dialog_about_app = new LovelyInfoDialog(this);
+                dialog_about_app.setTopColorRes(R.color.colorAccent)
+                        .setIcon(R.drawable.ic_perm_device_information_white_24dp)
+                        //This will add Don't show again checkbox to the dialog. You can pass any ID as argument
+                        //.setNotShowAgainOptionEnabled(0)
+                        //.setNotShowAgainOptionChecked(true)
+                        .setTitle(R.string.app_version)
+                        .setMessage(version)
+                        .show();
+
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         return super.onOptionsItemSelected(item);
